@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hollow Creek</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="crt"></div>
+
+<header>
+  <h1>HOLLOW CREEK</h1>
+  <p id="subtitle">“The town keeps records.”</p>
+</header>
+
+<section id="hud">
+  <span>♥ <b id="hp">100</b></span>
+  <span>☉ <b id="sanity">100</b></span>
+  <span id="location"></span>
+</section>
+
+<main id="game">
+  <img id="scene" src="assets/placeholder.png" alt="">
+  <p id="text"></p>
+  <div id="choices"></div>
+</main>
+
+<aside id="side">
+  <section>
+    <h3>Inventory</h3>
+    <ul id="inventory"></ul>
+  </section>
+
+  <section>
+    <h3>Map</h3>
+    <canvas id="map" width="240" height="240"></canvas>
+  </section>
+
+  <section>
+    <h3>Endings</h3>
+    <ul id="endings"></ul>
+  </section>
+</aside>
+
+<audio id="amb" loop src="assets/ambient.mp3"></audio>
+<audio id="static" loop src="assets/static.mp3"></audio>
+<audio id="whisper" src="assets/whisper.mp3"></audio>
+<audio id="radio" src="assets/radio.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
