@@ -2,52 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hollow Creek</title>
+<title>ASHWICK IS QUIET</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="crt"></div>
+<div id="vhs"></div>
+<div id="overlay"></div>
 
 <header>
-  <h1>HOLLOW CREEK</h1>
-  <p id="subtitle">“The town keeps records.”</p>
+  <h1 id="title">ASHWICK</h1>
+  <div id="stats">
+    <span>HP: <span id="health">100</span></span>
+    <span>SAN: <span id="sanity">100</span></span>
+  </div>
 </header>
 
-<section id="hud">
-  <span>♥ <b id="hp">100</b></span>
-  <span>☉ <b id="sanity">100</b></span>
-  <span id="location"></span>
-</section>
+<main>
+  <section id="map"></section>
 
-<main id="game">
-  <img id="scene" src="assets/placeholder.png" alt="">
-  <p id="text"></p>
-  <div id="choices"></div>
+  <section id="game">
+    <div id="text"></div>
+    <div id="choices"></div>
+  </section>
+
+  <aside id="inventory">
+    <h3>Inventory</h3>
+    <ul id="items"></ul>
+  </aside>
 </main>
 
-<aside id="side">
-  <section>
-    <h3>Inventory</h3>
-    <ul id="inventory"></ul>
-  </section>
+<footer>
+  <button onclick="openEndings()">ENDINGS</button>
+  <button onclick="saveGame()">SAVE</button>
+  <button onclick="loadGame()">LOAD</button>
+</footer>
 
-  <section>
-    <h3>Map</h3>
-    <canvas id="map" width="240" height="240"></canvas>
-  </section>
-
-  <section>
-    <h3>Endings</h3>
-    <ul id="endings"></ul>
-  </section>
-</aside>
-
-<audio id="amb" loop src="assets/ambient.mp3"></audio>
-<audio id="static" loop src="assets/static.mp3"></audio>
-<audio id="whisper" src="assets/whisper.mp3"></audio>
-<audio id="radio" src="assets/radio.mp3"></audio>
+<audio id="ambience" loop></audio>
+<audio id="whispers" loop></audio>
 
 <script src="script.js"></script>
 </body>
