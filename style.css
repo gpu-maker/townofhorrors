@@ -1,76 +1,102 @@
-* { box-sizing: border-box; }
-
 body {
   margin: 0;
+  font-family: monospace;
   background: #000;
   color: #d0d0d0;
-  font-family: monospace;
+  overflow: hidden;
 }
 
 header {
-  text-align: center;
-  border-bottom: 1px solid #222;
-  padding: 6px;
-}
-
-#hud {
+  background: #080808;
+  padding: 10px;
   display: flex;
-  justify-content: space-around;
-  padding: 6px;
-  border-bottom: 1px solid #222;
+  justify-content: space-between;
 }
 
-#game {
-  padding: 10px;
+#vhs {
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.03),
+      rgba(255,255,255,0.03) 1px,
+      transparent 2px,
+      transparent 3px
+    );
+  pointer-events: none;
+  animation: vhsMove 6s infinite linear;
 }
 
-#scene {
-  width: 100%;
-  max-height: 240px;
-  object-fit: cover;
-  filter: contrast(1.2) brightness(0.9);
+@keyframes vhsMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-4px); }
 }
 
-#choices button {
-  width: 100%;
-  margin-top: 6px;
-  padding: 6px;
-  background: #111;
-  color: #ccc;
-  border: 1px solid #333;
-  cursor: pointer;
+#overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: overlay;
 }
 
-#choices button:hover {
-  background: #222;
-}
-
-#side {
-  padding: 10px;
-  display: grid;
-  gap: 10px;
-}
-
-canvas {
-  border: 1px solid #333;
-}
-
-.low-sanity {
-  animation: flicker 0.07s infinite;
+.low-sanity #overlay {
+  background:
+    radial-gradient(circle at random, rgba(255,0,0,.1), transparent 40%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.05) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  animation: flicker .12s infinite;
 }
 
 @keyframes flicker {
-  50% { opacity: 0.87; }
+  0% { opacity: .2 }
+  100% { opacity: .5 }
 }
 
-#crt {
-  position: fixed;
+main {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  height: calc(100vh - 90px);
+}
+
+#map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  padding: 6px;
+}
+
+.tile {
+  background: #111;
+  height: 60px;
+  position: relative;
+}
+
+.tile.fog::after {
+  content: "";
   inset: 0;
-  background: repeating-linear-gradient(
-    rgba(255,255,255,0.025),
-    rgba(255,255,255,0.025) 1px,
-    transparent 2px,
-    transparent 3px
-  );
-  pointer-events: none;
+  position: absolute;
+  background: #000;
+}
+
+.tile.player {
+  outline: 1px solid #aa0000;
+}
+
+#choices button {
+  background: #111;
+  color: #ccc;
+  border: 1px solid #333;
+  padding: 6px;
+  margin: 5px 0;
+  transition: transform .2s;
+}
+
+.low-sanity #choices button:hover {
+  transform: translateX(3px);
 }
